@@ -1,20 +1,22 @@
 package com.solvd.amazon.gui.pages;
 
+import com.solvd.amazon.gui.pages.common.AccountPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class AccountPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = AccountPageBase.class)
+public class AccountPage extends AccountPageBase {
 
     @FindBy(xpath = ".//h1[contains(text(), 'Your Account')]")
     private ExtendedWebElement titlePage;
 
-    public AccountPage(WebDriver driver){
+    public AccountPage(WebDriver driver) {
         super(driver);
     }
 
-    public boolean isTitlePresent(){
+    public boolean isTitlePresent() {
         return titlePage.isElementPresent(5);
     }
 }

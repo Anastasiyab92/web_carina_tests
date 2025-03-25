@@ -1,11 +1,13 @@
 package com.solvd.amazon.gui.pages;
 
+import com.solvd.amazon.gui.pages.common.CartPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class CartPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass =CartPageBase.class)
+public class CartPage extends CartPageBase {
 
     @FindBy(xpath = "//h1[contains(text(),'Added to cart')]")
     public ExtendedWebElement cartTitle;
@@ -14,6 +16,7 @@ public class CartPage extends AbstractPage {
         super(driver);
     }
 
+    @Override
     public boolean isCartTitlePresent() {
         return cartTitle.isElementPresent(5);
     }

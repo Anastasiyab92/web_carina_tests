@@ -1,11 +1,14 @@
 package com.solvd.amazon.gui.pages;
 
+import com.solvd.amazon.gui.pages.common.AccountPageBase;
+import com.solvd.amazon.gui.pages.common.SignInPageBase;
+import com.zebrunner.carina.utils.factory.DeviceType;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class SignInPage extends AbstractPage {
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass =SignInPageBase.class)
+public class SignInPage extends SignInPageBase {
 
     @FindBy(id = "ap_email")
     private ExtendedWebElement emailField;
@@ -23,11 +26,11 @@ public class SignInPage extends AbstractPage {
         super(driver);
     }
 
-    public AccountPage login(String email, String password) {
+    public AccountPageBase login(String email, String password) {
         emailField.type(email);
         continueButton.click();
         passwordField.type(password);
         singInButton.click();
-        return new AccountPage(driver);
+        return initPage(driver, AccountPageBase.class);
     }
 }

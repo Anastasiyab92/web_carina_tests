@@ -1,44 +1,47 @@
 package com.solvd.amazon;
 
-import com.solvd.amazon.gui.pages.*;
+import com.solvd.amazon.gui.pages.common.CartPageBase;
+import com.solvd.amazon.gui.pages.common.HomePageBase;
+import com.solvd.amazon.gui.pages.common.ProductPageBase;
+import com.solvd.amazon.gui.pages.common.SearchResultsPageBase;
 import com.zebrunner.carina.core.IAbstractTest;
-import dev.failsafe.internal.util.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WebTest implements IAbstractTest {
 
     @Test
     public void testOpenHomePage() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
-        Assert.isTrue(homePage.isAmazonLogoPresent(), "Logo amazon isn't present");
-        Assert.isTrue(homePage.isPageOpened(5), "Home page didn't open.");
+        Assert.assertTrue(homePage.isAmazonLogoPresent(), "Logo amazon isn't present");
+        Assert.assertTrue(homePage.isPageOpened(5), "Home page didn't open.");
     }
 
     @Test
     public void testSearchProduct() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
-        Assert.isTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-        SearchResultsPage searchResultsPage = homePage.searchFor("iphone");
-        Assert.isTrue(searchResultsPage.isSearchResultPresent(), "Search results not found");
+        SearchResultsPageBase searchResultsPage = homePage.searchFor("iphone");
+        Assert.assertTrue(searchResultsPage.isSearchResultPresent(), "Search results not found");
 
-        ProductPage productPage = searchResultsPage.openFirstProduct();
-        productPage.isPageOpened();
+        ProductPageBase productPage = searchResultsPage.openFirstProduct();
+        Assert.assertTrue(productPage.isProductPageOpened(), "Page didn't open.");
     }
 
     @Test()
     public void testAddToCartProduct() {
-        HomePage homePage = new HomePage(getDriver());
+        HomePageBase homePage = initPage(getDriver(), HomePageBase.class);
         homePage.open();
-        Assert.isTrue(homePage.isPageOpened(), "Home page is not opened");
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
 
-        SearchResultsPage searchResultsPage = homePage.searchFor("laptop");
-        ProductPage productPage = searchResultsPage.openFirstAvailableProduct("Add to cart");
+        SearchResultsPageBase searchResultsPage = homePage.searchFor("laptop");
+        ProductPageBase productPage = searchResultsPage.openFirstAvailableProduct("Add to cart");
 
-        CartPage cartPage = productPage.addToCart();
+        CartPageBase cartPage = productPage.addToCart();
 
-        Assert.isTrue(cartPage.isCartTitlePresent(), "The cart did not open!");
+        Assert.assertTrue(cartPage.isCartTitlePresent(), "The cart did not open!");
     }
 }
