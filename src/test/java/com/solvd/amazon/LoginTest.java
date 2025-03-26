@@ -4,7 +4,6 @@ import com.solvd.amazon.gui.pages.common.AccountPageBase;
 import com.solvd.amazon.gui.pages.common.HomePageBase;
 import com.solvd.amazon.gui.pages.common.SignInPageBase;
 import com.zebrunner.carina.core.IAbstractTest;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -7,7 +7,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass =SignInPageBase.class)
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = SignInPageBase.class)
 public class SignInPage extends SignInPageBase {
 
     @FindBy(id = "ap_email")

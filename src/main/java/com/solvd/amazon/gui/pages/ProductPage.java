@@ -10,13 +10,11 @@ import org.openqa.selenium.support.FindBy;
 @DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = ProductPageBase.class)
 public class ProductPage extends ProductPageBase {
 
-    @FindBy(id="titleSection")
+    @FindBy(id = "titleSection")
     private ExtendedWebElement titleProduct;
 
     @FindBy(id = "add-to-cart-button")
     private ExtendedWebElement addToCartButton;
-
-
 
     public ProductPage(WebDriver driver) {
         super(driver);

@@ -6,7 +6,7 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass =CartPageBase.class)
+@DeviceType(pageType = DeviceType.Type.DESKTOP, parentClass = CartPageBase.class)
 public class CartPage extends CartPageBase {
 
     @FindBy(xpath = "//h1[contains(text(),'Added to cart')]")
