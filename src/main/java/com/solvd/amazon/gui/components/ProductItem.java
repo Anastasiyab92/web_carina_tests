@@ -32,7 +32,7 @@ public class ProductItem extends AbstractUIObject implements ICustomTypePageFact
     }
 
     public boolean isAddToCartButton() {
-        return addToCartButton.isElementPresent();
+        return addToCartButton.isElementPresent(5);
     }
 
 
